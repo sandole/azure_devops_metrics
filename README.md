@@ -14,7 +14,8 @@
 
 ## 📸 Screenshots
 
-Screenshots will be added after initial marketplace publication.
+Example view:
+![alt text](images/image.png)
 
 ## 🎯 Use Cases
 
