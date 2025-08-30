@@ -1,0 +1,5 @@
+node_modules/
+dist/
+*.vsix
+dev.html
+package-lock.json

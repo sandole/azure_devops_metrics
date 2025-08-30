@@ -1,0 +1,38 @@
+{
+  "name": "azure-devops-impact-metrics-extension",
+  "version": "1.0.8",
+  "description": "Azure DevOps extension to analyze development impact metrics",
+  "main": "static/main.js",
+  "scripts": {
+    "build": "npm run copy-files",
+    "copy-files": "mkdir -p dist && cp -r static dist/ && cp -r images dist/ && cp vss-extension.json dist/",
+    "package": "tfx extension create --manifest-globs dist/vss-extension.json --output-path dist/",
+    "publish": "tfx extension publish --manifest-globs dist/vss-extension.json",
+    "dev": "npm run build && npm run package",
+    "serve": "python3 -m http.server 8080 --directory static",
+    "serve-alt": "npx http-server static -p 8080 -c-1"
+  },
+  "keywords": [
+    "azure-devops",
+    "metrics",
+    "productivity",
+    "analytics",
+    "extension"
+  ],
+  "author": "John Seong",
+  "license": "MIT",
+  "devDependencies": {
+    "tfx-cli": "^0.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sandole97/azure-devops-metrics-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sandole97/azure-devops-metrics-extension/issues"
+  },
+  "homepage": "https://github.com/sandole97/azure-devops-metrics-extension#readme",
+  "dependencies": {
+    "vss-web-extension-sdk": "^5.141.0"
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DevOps Impact Metrics</title>
+    <script src="VSS.SDK.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>DevOps Impact Metrics</h1>
+            <p class="subtitle">Analyze your development contributions and impact</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="patToken">Personal Access Token:</label>
+                <input type="password" id="patToken" placeholder="Enter your Azure DevOps PAT" />
+                <small>Required for API access. <a href="https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate" target="_blank">How to create a PAT</a></small>
+            </div>
+            
+            <div class="control-group">
+                <label for="daysBack">Analysis Period:</label>
+                <select id="daysBack">
+                    <option value="7">Last 7 days</option>
+                    <option value="30" selected>Last 30 days</option>
+                    <option value="180">Last 6 months</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="userFilter">Filter by User:</label>
+                <input type="text" id="userFilter" placeholder="Enter email (optional)" />
+            </div>
+            
+            <button id="analyzeBtn" class="primary-btn">Analyze Impact</button>
+            <button id="exportBtn" class="secondary-btn" style="display: none;">Export Data</button>
+        </div>
+
+        <div id="loadingSection" class="loading-section" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing your DevOps impact... This may take a moment.</p>
+        </div>
+
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="totalCommits">0</div>
+                    <div class="metric-label">Commits</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="totalPRs">0</div>
+                    <div class="metric-label">Pull Requests</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="totalWorkItems">0</div>
+                    <div class="metric-label">Work Items</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="activeRepos">0</div>
+                    <div class="metric-label">Active Repos</div>
+                </div>
+            </div>
+            <div class="details-section">
+                <h3>Detailed Breakdown</h3>
+                <div id="detailsTable" class="details-table"></div>
+            </div>
+        </div>
+
+        <div id="errorSection" class="error-section" style="display: none;">
+            <h3>Error</h3>
+            <p id="errorMessage"></p>
+        </div>
+
+        <footer class="footer">
+            <p>Generated on: <span id="timestamp"></span></p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
